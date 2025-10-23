@@ -1,0 +1,438 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fffaf0;
+  }
+  
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff4b2;
+    padding: 10px 40px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  nav a {
+   text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  nav a:hover {
+    background: #f9a825;
+    color: white;
+}
+  
+  .hero {
+  background-image: url('../pictures/heri.jpg'); 
+  background-size: cover;
+    background-position: center;
+    height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 100px 40px;
+    height: 100%;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    line-height: 1.2;
+  }
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+  }
+  
+  
+  .cta-buttons .btn,
+.cta-buttons button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+  .info-cards {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff4b2;
+    padding: 40px 0;
+  }
+  
+  .info-box {
+    text-align: center;
+  }
+  
+  .info-box h2 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .testimonial {
+    background-color: white;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .testimonial img {
+    width: 100px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial blockquote {
+    font-style: italic;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .reg-number {
+    color: gray;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  
+/* donate page styles */
+body.donate-page {
+    background-color: #fffaf0;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .donate-header {
+    background-color: #fff4b2;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  .donate-header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .donate-header img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .donation-container {
+    background-color: white;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .donation-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .donation-container p {
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  form input[type="text"],
+  form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fffaf0;
+    font-size: 1rem;
+  }
+  
+  .payment-method {
+    text-align: left;
+    margin: 20px 0 10px;
+  }
+  
+  .payment-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .method {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #eee;
+    background-color: #fff7e0;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .method.selected {
+    background-color: #ffd278;
+    border: 2px solid #f9a825;
+  }
+  
+  .card-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .card-info input {
+    flex: 1;
+    min-width: 30%;
+  }
+  
+  .donate-btn {
+    width: 100%;
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .donate-btn:hover {
+    background-color: #e68a00;
+  }
+  .back-button {
+    background-color: transparent;
+    color: #333;
+    border: none;
+    font-size: 1rem;
+    text-align: left;
+    padding: 10px 0;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .back-button:hover {
+    color: #f59e0b;
+    text-decoration: underline;
+  }
+
+  .volunteer-page {
+    background-color: #fffaf0;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  form input,
+  form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fffaf0;
+    font-size: 1rem;
+  }
+  
+  form button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #e68a00;
+  }
+  .about-page {
+    background-color: #fffaf0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .about-header {
+    background-color: #fff4b2;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .about-header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-header .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .about-header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .about-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  .about-container h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .about-container section {
+    margin-bottom: 30px;
+  }
+  
+  .about-container h2 {
+    font-size: 1.5rem;
+    color: #f59e0b;
+  }
+  
+  .about-container p {
+    font-size: 1rem;
+    color: #333;
+  }
+  .programmes-page {
+    background-color: #fffaf0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .programmes-header {
+    background-color: #fff4b2;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .programmes-header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .programmes-header .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .programmes-header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .programmes-header nav a.active {
+    color: #f59e0b;
+    border-bottom: 2px solid #f59e0b;
+  }
+  
+  .programmes-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .programmes-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #f59e0b;
+  }
+  
+  .programme {
+    margin-bottom: 40px;
+  }
+  
+  .programme h2 {
+    font-size: 1.8rem;
+    color: #f59e0b;
+    margin-bottom: 15px;
+  }
+  
+  .programme p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .programme img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  
+  .back-button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .back-button:hover {
+    background-color: #e68a00;
+  }
+  

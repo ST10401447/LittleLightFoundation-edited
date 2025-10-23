@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Little Light Foundation</title>
+    
+    
+    <style>
+       
+* {
+    margin: 0;
+    padding: 0;  
+    box-sizing: border-box;
+}
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #fff4b2 0%, #fff4b2 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10 40px;
+    box-shadow: 0 4px 20px rgba(249,168,37,0.15);
+    z-index: 999;
+  
+}
+
+.logo {
+     display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background: #f9a825;
+    color: white;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* BACK BUTTON */
+.back-button {
+    display: block;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1.5rem;
+    background: #FFA500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #FF8C00;
+}
+
+
+body {
+    margin: 0;
+    padding-top: 80px; /* keeps content below fixed nav */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff4b2 0%, #ffd278 50%, #f9a825 100%);
+    min-height: 100vh;
+    color: #333;
+}
+.logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* subtract navbar height */
+    padding: 20px;
+}
+
+.back-button {
+      display: block;
+      margin-bottom: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: #FFA500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background: #FF8C00;
+    }
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(249, 168, 37, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 2px solid #fff4b2;
+        }
+
+        .login-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #fff4b2;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #fffaf0;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #f9a825;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(249, 168, 37, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f9a825 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #e68a00 0%, #f59e0b 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        
+
+        .error-message {
+            color: #dc2626;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            background: #fffaf0;
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #fff4b2 0%, #ffd278 100%);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(249, 168, 37, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #f9a825;
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .dashboard-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(249, 168, 37, 0.1);
+            text-align: center;
+            border: 2px solid #fff4b2;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b 0%, #f9a825 100%);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(249, 168, 37, 0.2);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #f59e0b;
+            display: block;
+            text-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(249, 168, 37, 0.1);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 2px solid #fff4b2;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #fff4b2 0%, #ffd278 100%);
+            padding: 20px;
+            border-bottom: 2px solid #f9a825;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fffaf0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 1px solid #fff4b2;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f9a825 0%, #f59e0b 100%);
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table tr:hover {
+            background: linear-gradient(135deg, #fff4b2 0%, rgba(255, 210, 120, 0.3) 100%);
+        }
+
+        .data-table tr:nth-child(even) {
+            background: rgba(255, 244, 178, 0.3);
+        }
+
+        .data-table tr:nth-child(even):hover {
+            background: linear-gradient(135deg, #fff4b2 0%, rgba(255, 210, 120, 0.5) 100%);
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-unread {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+        }
+
+        .status-pending {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+        }
+
+        .status-read {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .message-preview {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #fff4b2;
+            border-top: 4px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            background: #fffaf0;
+            border-radius: 8px;
+            border: 2px dashed #fff4b2;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                font-size: 14px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+
+            .section-content {
+                padding: 15px;
+            }
+
+            .dashboard-content {
+                padding: 15px;
+            }
+        }
+
+        /* Additional styling for better visual hierarchy */
+        .section:hover {
+            box-shadow: 0 8px 30px rgba(249, 168, 37, 0.15);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Custom scrollbar for tables */
+        .section-content::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .section-content::-webkit-scrollbar-track {
+            background: #fffaf0;
+            border-radius: 4px;
+        }
+
+        .section-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #f59e0b 0%, #f9a825 100%);
+            border-radius: 4px;
+        }
+
+        .section-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #e68a00 0%, #f59e0b 100%);
+        }
+    </style>
+</head>
+<body>
+   <header class="top-nav">
+    <div class="logo">
+        <img src="pictures/sun.jpg" alt="Sun Icon" />
+        <span>Little Light Foundation</span>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+</header>
+    
+    <!-- Login Form -->
+    <div id="login-container" class="login-container">
+        <div class="login-card">
+            <h1 class="login-title">Admin Login</h1>
+            <p class="login-subtitle">Little Light Foundation Dashboard</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="login-btn" id="login-btn">
+                    Sign In
+                </button>
+                
+                <div id="error-message" class="error-message" style="display: none;"></div>
+
+            </form>
+             
+        </div>
+        
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Little Light Foundation - Admin Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" id="contact-count">-</span>
+                    <div class="stat-label">Contact Messages</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="donation-count">-</span>
+                    <div class="stat-label">Donations</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="volunteer-count">-</span>
+                    <div class="stat-label">Volunteer Requests</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="unread-count">-</span>
+                    <div class="stat-label">Unread Messages</div>
+                </div>
+            </div>
+
+            <!-- Contact Messages Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Contact Messages</h2>
+                </div>
+                <div class="section-content">
+                    <div id="contact-loading" class="loading">
+                        <div class="spinner"></div>
+                        Loading contact messages...
+                    </div>
+                    <div id="contact-messages" style="display: none;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contact-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donations Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Donations</h2>
+                </div>
+                <div class="section-content">
+                    <div id="donations-loading" class="loading">
+                        <div class="spinner"></div>
+                        Loading donations...
+                    </div>
+                    <div id="donations-data" style="display: none;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Donor Name</th>
+                                    <th>Email</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donations-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteer Requests Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Volunteer Requests</h2>
+                </div>
+                <div class="section-content">
+                    <div id="volunteers-loading" class="loading">
+                        <div class="spinner"></div>
+                        Loading volunteer requests...
+                    </div>
+                    <div id="volunteers-data" style="display: none;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Availability</th>
+                                    <th>Message</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="volunteers-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBTpZsZiVwHWBNQm9b4ZK4rsjDawW9U79A",
+            authDomain: "littlelight-12772.firebaseapp.com",
+            databaseURL: "https://littlelight-12772-default-rtdb.firebaseio.com",
+            projectId: "littlelight-12772",
+            storageBucket: "littlelight-12772.firebasestorage.app",
+            messagingSenderId: "26430983737",
+            appId: "1:26430983737:web:287f97071cddd1c4b447e8",
+            measurementId: "G-CZ5E58P56V"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('login-btn');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Debug logging
+            console.log('=== LOGIN ATTEMPT ===');
+            console.log('Entered username:', username);
+            console.log('Entered password:', password);
+            console.log('Username length:', username.length);
+            console.log('Password length:', password.length);
+            
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Signing in...';
+            errorMessage.style.display = 'none';
+            
+            try {
+                console.log('Attempting to fetch admin data from Firebase...');
+                
+                // Get admin credentials from Firebase
+                const adminRef = ref(database, 'admin');
+                const adminSnapshot = await get(adminRef);
+                
+                console.log('Firebase snapshot exists:', adminSnapshot.exists());
+                
+                if (adminSnapshot.exists()) {
+                    const adminData = adminSnapshot.val();
+                    console.log('Raw admin data from Firebase:', adminData);
+                    console.log('Admin data keys:', Object.keys(adminData));
+                    
+                    // Extract and log the stored credentials
+                    const storedUsername = adminData.user;
+                    const storedPassword = adminData.password;
+                    
+                    console.log('Stored username:', storedUsername);
+                    console.log('Stored password:', storedPassword);
+                    console.log('Stored username type:', typeof storedUsername);
+                    console.log('Stored password type:', typeof storedPassword);
+                    console.log('Stored username length:', storedUsername ? storedUsername.length : 'null/undefined');
+                    console.log('Stored password length:', storedPassword ? storedPassword.length : 'null/undefined');
+                    
+                    // Detailed comparison
+                    const usernameMatch = username === storedUsername;
+                    const passwordMatch = password === storedPassword;
+                    
+                    console.log('=== COMPARISON RESULTS ===');
+                    console.log('Username match:', usernameMatch);
+                    console.log('Password match:', passwordMatch);
+                    
+                    if (!usernameMatch) {
+                        console.log('USERNAME MISMATCH:');
+                        console.log('  Entered: "' + username + '"');
+                        console.log('  Expected: "' + storedUsername + '"');
+                        console.log('  Character codes entered:', username.split('').map(c => c.charCodeAt(0)));
+                        console.log('  Character codes expected:', storedUsername ? storedUsername.split('').map(c => c.charCodeAt(0)) : 'N/A');
+                    }
+                    
+                    if (!passwordMatch) {
+                        console.log('PASSWORD MISMATCH:');
+                        console.log('  Entered: "' + password + '"');
+                        console.log('  Expected: "' + storedPassword + '"');
+                        console.log('  Character codes entered:', password.split('').map(c => c.charCodeAt(0)));
+                        console.log('  Character codes expected:', storedPassword ? storedPassword.split('').map(c => c.charCodeAt(0)) : 'N/A');
+                    }
+                    
+                    if (usernameMatch && passwordMatch) {
+                        console.log('LOGIN SUCCESSFUL!');
+                        // Successful login
+                        document.getElementById('login-container').style.display = 'none';
+                        document.getElementById('dashboard').style.display = 'block';
+                        loadDashboardData();
+                    } else {
+                        let errorMsg = 'Login failed: ';
+                        if (!usernameMatch && !passwordMatch) {
+                            errorMsg += 'Both username and password are incorrect';
+                        } else if (!usernameMatch) {
+                            errorMsg += 'Username is incorrect';
+                        } else if (!passwordMatch) {
+                            errorMsg += 'Password is incorrect';
+                        }
+                        
+                        console.log('LOGIN FAILED:', errorMsg);
+                        throw new Error(errorMsg);
+                    }
+                } else {
+                    console.log('ERROR: Admin configuration not found in Firebase');
+                    console.log('Checking if admin node exists at all...');
+                    
+                    // Let's also check what's actually in the database root
+                    const rootRef = ref(database, '/');
+                    const rootSnapshot = await get(rootRef);
+                    if (rootSnapshot.exists()) {
+                        console.log('Database root contains:', Object.keys(rootSnapshot.val()));
+                    } else {
+                        console.log('Database appears to be completely empty');
+                    }
+                    
+                    throw new Error('Admin configuration not found in database');
+                }
+            } catch (error) {
+                console.error('LOGIN ERROR:', error);
+                console.error('Error type:', typeof error);
+                console.error('Error message:', error.message);
+                console.error('Full error object:', error);
+                
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Sign In';
+            }
+        });
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Load all data in parallel
+                const [contactData, donationData, volunteerData] = await Promise.all([
+                    loadContactMessages(),
+                    loadDonations(),
+                    loadVolunteers()
+                ]);
+
+                // Update statistics
+                updateStatistics(contactData, donationData, volunteerData);
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        // Load contact messages
+        async function loadContactMessages() {
+            try {
+                const contactRef = ref(database, 'contactMessages');
+                const snapshot = await get(contactRef);
+                const data = snapshot.exists() ? snapshot.val() : {};
+                
+                const messages = Object.values(data);
+                displayContactMessages(messages);
+                return messages;
+            } catch (error) {
+                console.error('Error loading contact messages:', error);
+                document.getElementById('contact-loading').innerHTML = '<div class="empty-state">Error loading contact messages</div>';
+                return [];
+            }
+        }
+
+        // Load donations
+        async function loadDonations() {
+            try {
+                const donationsRef = ref(database, 'donations');
+                const snapshot = await get(donationsRef);
+                const data = snapshot.exists() ? snapshot.val() : {};
+                
+                const donations = Object.values(data);
+                displayDonations(donations);
+                return donations;
+            } catch (error) {
+                console.error('Error loading donations:', error);
+                document.getElementById('donations-loading').innerHTML = '<div class="empty-state">Error loading donations</div>';
+                return [];
+            }
+        }
+
+        // Load volunteer requests
+        async function loadVolunteers() {
+            try {
+                const volunteersRef = ref(database, 'volunteerRequests');
+                const snapshot = await get(volunteersRef);
+                const data = snapshot.exists() ? snapshot.val() : {};
+                
+                const volunteers = Object.values(data);
+                displayVolunteers(volunteers);
+                return volunteers;
+            } catch (error) {
+                console.error('Error loading volunteer requests:', error);
+                document.getElementById('volunteers-loading').innerHTML = '<div class="empty-state">Error loading volunteer requests</div>';
+                return [];
+            }
+        }
+
+        // Display contact messages
+        function displayContactMessages(messages) {
+            const loading = document.getElementById('contact-loading');
+            const container = document.getElementById('contact-messages');
+            const tbody = document.getElementById('contact-table-body');
+            
+            loading.style.display = 'none';
+            container.style.display = 'block';
+            
+            if (messages.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No contact messages found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = messages
+                .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0))
+                .map(msg => `
+                    <tr>
+                        <td>${msg.name || 'N/A'}</td>
+                        <td>${msg.email || 'N/A'}</td>
+                        <td class="message-preview" title="${msg.message || ''}">${msg.message || 'N/A'}</td>
+                        <td>${msg.dateCreated || 'N/A'}</td>
+                        <td><span class="status-badge status-${msg.status || 'unread'}">${msg.status || 'unread'}</span></td>
+                    </tr>
+                `).join('');
+        }
+
+        // Display donations
+        function displayDonations(donations) {
+            const loading = document.getElementById('donations-loading');
+            const container = document.getElementById('donations-data');
+            const tbody = document.getElementById('donations-table-body');
+            
+            loading.style.display = 'none';
+            container.style.display = 'block';
+            
+            if (donations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No donations found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = donations
+                .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0))
+                .map(donation => `
+                    <tr>
+                        <td>${donation.donorName || 'N/A'}</td>
+                        <td>${donation.donorEmail || 'N/A'}</td>
+                        <td>R${donation.amount || '0'}</td>
+                        <td>${donation.paymentMethod || 'N/A'}</td>
+                        <td>${new Date((donation.timestamp || 0)).toLocaleDateString()}</td>
+                    </tr>
+                `).join('');
+        }
+
+        // Display volunteers
+        function displayVolunteers(volunteers) {
+            const loading = document.getElementById('volunteers-loading');
+            const container = document.getElementById('volunteers-data');
+            const tbody = document.getElementById('volunteers-table-body');
+            
+            loading.style.display = 'none';
+            container.style.display = 'block';
+            
+            if (volunteers.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No volunteer requests found</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = volunteers
+                .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0))
+                .map(volunteer => `
+                    <tr>
+                        <td>${volunteer.fullName || 'N/A'}</td>
+                        <td>${volunteer.email || 'N/A'}</td>
+                        <td>${volunteer.phone || 'N/A'}</td>
+                        <td>${volunteer.availability || 'N/A'}</td>
+                        <td class="message-preview" title="${volunteer.message || ''}">${volunteer.message || 'N/A'}</td>
+                        <td>${new Date((volunteer.timestamp || 0)).toLocaleDateString()}</td>
+                    </tr>
+                `).join('');
+        }
+
+        // Update statistics
+        function updateStatistics(contacts, donations, volunteers) {
+            document.getElementById('contact-count').textContent = contacts.length;
+            document.getElementById('donation-count').textContent = donations.length;
+            document.getElementById('volunteer-count').textContent = volunteers.length;
+            document.getElementById('unread-count').textContent = 
+                contacts.filter(c => c.status === 'unread').length;
+        }
+
+        // Logout functionality
+        window.logout = function() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('login-container').style.display = 'flex';
+            document.getElementById('login-form').reset();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Little Light Foundation</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFAF0;
+            color: #2F2F2F;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2F2F2F;
+            margin-bottom: 24px;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .contact-info-card {
+            background-color: #FFFFF0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-container {
+            width: 48px;
+            height: 48px;
+            background-color: #FFA500;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .contact-info-content h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2F2F2F;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-content p {
+            font-size: 14px;
+            color: #8B8B8B;
+            line-height: 1.3;
+            white-space: pre-line;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2F2F2F;
+            margin-bottom: 16px;
+        }
+
+        .contact-form-card {
+            background-color: #FFFFF0;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #8B8B8B;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #8B8B8B;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #2F2F2F;
+            background-color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFA500;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:hover {
+            background-color: #FF8C00;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .submit-btn:disabled {
+            background-color: #CCCCCC;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .thank-you-icon {
+            width: 48px;
+            height: 48px;
+            fill: #FFA500;
+            margin: 0 auto 12px;
+        }
+
+        .thank-you-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2F2F2F;
+            margin-bottom: 8px;
+        }
+
+        .thank-you-subtitle {
+            font-size: 14px;
+            color: #8B8B8B;
+            margin-bottom: 16px;
+        }
+
+        .reset-btn {
+            background: none;
+            border: none;
+            color: #FFA500;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .reset-btn:hover {
+            color: #FF8C00;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+
+        .toast.success {
+            background-color: #28a745;
+        }
+
+        .toast.error {
+            background-color: #dc3545;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .contact-info-card {
+                padding: 16px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-nav">
+    <div class="logo">
+      <img src="pictures/sun.jpg" alt="Sun Icon" />
+      <span>Little Light Foundation</span>
+    </div>
+    <nav>
+       <a href="index.html" class="btn">Home</a>
+        <a href="about.html" class="btn">About</a>
+        <a href="programme.html" class="btn">Programmes</a>
+        <a href="event.html" class="btn">Events</a>
+        <a href="contact.html" class="btn">Contact Us</a>
+        
+    </nav>
+  </header>
+    <div class="container">
+        <h1 class="page-title">Contact Us</h1>
+        
+        <div class="contact-info-grid">
+            <div class="contact-info-card">
+                <div class="icon-container">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </div>
+                <div class="contact-info-content">
+                    <h3>Phone</h3>
+                    <p>+27 11 123 4567</p>
+                </div>
+            </div>
+
+            <div class="contact-info-card">
+                <div class="icon-container">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </div>
+                <div class="contact-info-content">
+                    <h3>Email</h3>
+                    <p>info@littlelightfoundation.org</p>
+                </div>
+            </div>
+
+            <div class="contact-info-card">
+                <div class="icon-container">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="contact-info-content">
+                    <h3>Address</h3>
+                    <p>123 Hope Street
+Johannesburg, 2000
+South Africa</p>
+                </div>
+            </div>
+
+            <div class="contact-info-card">
+                <div class="icon-container">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                        <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                </div>
+                <div class="contact-info-content">
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 5:00 PM
+Saturday: 9:00 AM - 2:00 PM
+Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Get In Touch</h2>
+        
+        <div class="contact-form-card">
+            <div id="contact-form">
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div id="thank-you-message" class="thank-you-message" style="display: none;">
+                <svg class="thank-you-icon" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <div class="thank-you-title">Thank you for your message!</div>
+                <div class="thank-you-subtitle">We'll get back to you soon.</div>
+                <button class="reset-btn" onclick="resetForm()">Send Another Message</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBTpZsZiVwHWBNQm9b4ZK4rsjDawW9U79A",
+            authDomain: "littlelight-12772.firebaseapp.com",
+            databaseURL: "https://littlelight-12772-default-rtdb.firebaseio.com",
+            projectId: "littlelight-12772",
+            storageBucket: "littlelight-12772.firebasestorage.app",
+            messagingSenderId: "26430983737",
+            appId: "1:26430983737:web:287f97071cddd1c4b447e8",
+            measurementId: "G-CZ5E58P56V"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Make functions globally available
+        window.submitContactMessage = async function(name, email, message) {
+            try {
+                const contactRef = ref(database, 'contactMessages');
+                const newMessageRef = push(contactRef);
+                
+                const contactMessage = {
+                    id: newMessageRef.key,
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: Date.now(),
+                    status: "unread",
+                    dateCreated: new Date().toLocaleString('en-ZA', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    })
+                };
+
+                await set(newMessageRef, contactMessage);
+                return { success: true };
+            } catch (error) {
+                console.error('Error submitting message:', error);
+                return { success: false, error: error.message };
+            }
+        };
+
+        // Form submission handler
+        document.getElementById('messageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (!name || !email || !message) {
+                showToast('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Disable form and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            try {
+                const result = await window.submitContactMessage(name, email, message);
+                
+                if (result.success) {
+                    showThankYouMessage();
+                    showToast('Message sent successfully!', 'success');
+                } else {
+                    showToast('Error: ' + result.error, 'error');
+                }
+            } catch (error) {
+                showToast('Error sending message', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
+
+        function showThankYouMessage() {
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('thank-you-message').style.display = 'block';
+        }
+
+        window.resetForm = function() {
+            document.getElementById('contact-form').style.display = 'block';
+            document.getElementById('thank-you-message').style.display = 'none';
+            document.getElementById('messageForm').reset();
+        };
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
