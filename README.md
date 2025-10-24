@@ -28,7 +28,7 @@ Provides administrative access to monitor and manage:
 * Backend:Firebase.
 * Database:Firebase Realtime Database.
 ### How to run the project
-1.Clone the repository.
-2.Navigate to the project folder.
-3.Open Index.html in your browser to view the website locally.
+1. Clone the repository.
+2. Navigate to the project folder.
+3. Open Index.html in your browser to view the website locally.
 
