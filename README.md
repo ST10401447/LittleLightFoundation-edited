@@ -1,5 +1,5 @@
 ## Overview
-The Little Light Foundation website was developed by out team to support an Non-Profit Organization(NGO) which is dedicated to hepl childeren from poor families nad those without homes.This platform allows users to know more about the organization,donate,volunterr and remain informed about the upcoming events and the community programs.
+The Little Light Foundation website was developed by our team to support an Non-Profit Organization(NGO) which is dedicated to help childeren from poor families and those without homes.This platform allows users to know more about the organization,donate,volunter and remain informed about the upcoming events and the community programs.
 
 ## Features
 ### About Us
